@@ -44,7 +44,7 @@ cp ~/.near/validator_key.json ./neardev/default/test_near.json
 
 Then deploy the `cross-contract` contract:
 ```bash
-near create_account cross_contract --masterAccount=test_near  --initialBalance 10000000
+near create_account cross_contract --masterAccount=test_near  --initialBalance 1
 near deploy --accountId=cross_contract --wasmFile=../examples/cross-contract-high-level/res/cross_contract_high_level.wasm
 ```
 
