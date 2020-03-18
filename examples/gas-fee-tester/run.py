@@ -519,8 +519,85 @@ def test_vec_string():
 
 
 
+def test_array_u8():
+    print(" -> [u8; X] <-")
+
+    vec = list(range(1, 11))
+
+    print(" -> JSON Inputs <- ")
+
+    last = 0
+    diffs = []
+    for vl in range(len(vec) + 1):
+        v = vec[:vl]
+        input = json_input({"v": v})
+        gas_input = gas_of("input_json_array_%d" % (vl,), input) - gas_structure_noop
+        diff = gas_input - last
+        last = gas_input
+        diffs.append(diff)
+        diff_str = " difference for 1 element is %s" % f(diff) if vl else ""
+        if vl < 3:
+            print("Cost of JSON input of [u8; %d] is %s%s" % (vl, f(gas_input), diff_str))
+    print("Average diff", mean(diffs[2:]))
+
+    print(" -> JSON Outputs <- ")
+
+    last = 0
+    diffs = []
+    for vl in range(len(vec) + 1):
+        v = vec[:vl]
+        input = json_input({"v": v})
+        gas_input = gas_of("input_json_array_%d" % (vl,), input)
+        gas_output = gas_of("output_json_array_%d" % (vl,), input) - gas_input
+        diff = gas_output - last
+        last = gas_output
+        diffs.append(diff)
+        diff_str = " difference for 1 element is %s" % f(diff) if vl else ""
+        if vl < 3:
+            print("Cost of JSON output of [u8; %d] is %s%s" % (vl, f(gas_output), diff_str))
+    print("Average diff", mean(diffs[2:]))
+
+    print(" -> Borsh Input <- ")
+
+    last = 0
+    diffs = []
+    for vl in range(len(vec) + 1):
+        v = vec[:vl]
+        input = []
+        for a in v:
+            input += borsh_input("<B", a)
+        gas_input = gas_of("input_borsh_array_%d" % (vl,), input) - gas_structure_noop
+        diff = gas_input - last
+        last = gas_input
+        diffs.append(diff)
+        diff_str = " difference for 1 element is %s" % f(diff) if vl else ""
+        if vl < 3:
+            print("Cost of Borsh input of [u8; %d] is %s%s" % (vl, f(gas_input), diff_str))
+    print("Average diff", mean(diffs[2:]))
+
+    print(" -> Borsh Outputs <- ")
+
+    last = 0
+    diffs = []
+    for vl in range(len(vec) + 1):
+        v = vec[:vl]
+        input = []
+        for a in v:
+            input += borsh_input("<B", a)
+        gas_input = gas_of("input_borsh_array_%d" % (vl,), input)
+        gas_output = gas_of("output_borsh_array_%d" % (vl,), input) - gas_input
+        diff = gas_output - last
+        last = gas_output
+        diffs.append(diff)
+        diff_str = " difference for 1 element is %s" % f(diff) if vl else ""
+        if vl < 3:
+            print("Cost of Borsh output of [u8; %d] is %s%s" % (vl, f(gas_output), diff_str))
+    print("Average diff", mean(diffs[2:]))
+
+
 
 test_integers()
+test_array_u8()
 test_strings()
 test_vec_u8()
 test_vec_u32()

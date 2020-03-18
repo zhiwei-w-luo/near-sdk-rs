@@ -133,4 +133,149 @@ impl GasFeeTester {
     pub fn output_borsh_vec_string_v(#[serializer(borsh)] v: Vec<String>) -> Vec<String> {
         v
     }
+
+    // Fixed size arrays.
+
+    pub fn input_json_array_0(v: [u8; 0]) {}
+
+    pub fn input_borsh_array_0(#[serializer(borsh)] v: [u8; 0]) {}
+
+    pub fn output_json_array_0(v: [u8; 0]) -> [u8; 0] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_0(#[serializer(borsh)] v: [u8; 0]) -> [u8; 0] {
+        v
+    }
+
+    pub fn input_json_array_1(v: [u8; 1]) {}
+
+    pub fn input_borsh_array_1(#[serializer(borsh)] v: [u8; 1]) {}
+
+    pub fn output_json_array_1(v: [u8; 1]) -> [u8; 1] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_1(#[serializer(borsh)] v: [u8; 1]) -> [u8; 1] {
+        v
+    }
+
+    pub fn input_json_array_2(v: [u8; 2]) {}
+
+    pub fn input_borsh_array_2(#[serializer(borsh)] v: [u8; 2]) {}
+
+    pub fn output_json_array_2(v: [u8; 2]) -> [u8; 2] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_2(#[serializer(borsh)] v: [u8; 2]) -> [u8; 2] {
+        v
+    }
+
+    pub fn input_json_array_3(v: [u8; 3]) {}
+
+    pub fn input_borsh_array_3(#[serializer(borsh)] v: [u8; 3]) {}
+
+    pub fn output_json_array_3(v: [u8; 3]) -> [u8; 3] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_3(#[serializer(borsh)] v: [u8; 3]) -> [u8; 3] {
+        v
+    }
+
+    pub fn input_json_array_4(v: [u8; 4]) {}
+
+    pub fn input_borsh_array_4(#[serializer(borsh)] v: [u8; 4]) {}
+
+    pub fn output_json_array_4(v: [u8; 4]) -> [u8; 4] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_4(#[serializer(borsh)] v: [u8; 4]) -> [u8; 4] {
+        v
+    }
+
+    pub fn input_json_array_5(v: [u8; 5]) {}
+
+    pub fn input_borsh_array_5(#[serializer(borsh)] v: [u8; 5]) {}
+
+    pub fn output_json_array_5(v: [u8; 5]) -> [u8; 5] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_5(#[serializer(borsh)] v: [u8; 5]) -> [u8; 5] {
+        v
+    }
+
+    pub fn input_json_array_6(v: [u8; 6]) {}
+
+    pub fn input_borsh_array_6(#[serializer(borsh)] v: [u8; 6]) {}
+
+    pub fn output_json_array_6(v: [u8; 6]) -> [u8; 6] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_6(#[serializer(borsh)] v: [u8; 6]) -> [u8; 6] {
+        v
+    }
+
+    pub fn input_json_array_7(v: [u8; 7]) {}
+
+    pub fn input_borsh_array_7(#[serializer(borsh)] v: [u8; 7]) {}
+
+    pub fn output_json_array_7(v: [u8; 7]) -> [u8; 7] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_7(#[serializer(borsh)] v: [u8; 7]) -> [u8; 7] {
+        v
+    }
+
+    pub fn input_json_array_8(v: [u8; 8]) {}
+
+    pub fn input_borsh_array_8(#[serializer(borsh)] v: [u8; 8]) {}
+
+    pub fn output_json_array_8(v: [u8; 8]) -> [u8; 8] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_8(#[serializer(borsh)] v: [u8; 8]) -> [u8; 8] {
+        v
+    }
+
+    pub fn input_json_array_9(v: [u8; 9]) {}
+
+    pub fn input_borsh_array_9(#[serializer(borsh)] v: [u8; 9]) {}
+
+    pub fn output_json_array_9(v: [u8; 9]) -> [u8; 9] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_9(#[serializer(borsh)] v: [u8; 9]) -> [u8; 9] {
+        v
+    }
+
+    pub fn input_json_array_10(v: [u8; 10]) {}
+
+    pub fn input_borsh_array_10(#[serializer(borsh)] v: [u8; 10]) {}
+
+    pub fn output_json_array_10(v: [u8; 10]) -> [u8; 10] {
+        v
+    }
+
+    #[result_serializer(borsh)]
+    pub fn output_borsh_array_10(#[serializer(borsh)] v: [u8; 10]) -> [u8; 10] {
+        v
+    }
 }
