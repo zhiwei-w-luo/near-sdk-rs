@@ -635,8 +635,14 @@ pub fn log(message: &[u8]) {
 /// Writes key-value into storage.
 /// If another key-value existed in the storage with the same key it returns `true`, otherwise `false`.
 pub fn storage_write(key: &[u8], value: &[u8]) -> bool {
+
     match unsafe {
         BLOCKCHAIN_INTERFACE.with(|b| {
+            log(format!("storage_write {} {} {} {} {}", key.len() as u64,
+                        key.as_ptr() as u64,
+                        value.len() as u64,
+                        value.as_ptr() as u64,
+                        EVICTED_REGISTER).as_bytes());
             b.borrow().as_ref().expect(BLOCKCHAIN_INTERFACE_NOT_SET_ERR).storage_write(
                 key.len() as _,
                 key.as_ptr() as _,
