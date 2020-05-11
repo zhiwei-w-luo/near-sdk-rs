@@ -46,8 +46,8 @@ impl NonfungibleToken {
 
     /// forge of new Token
     pub fn forge(&mut self, value: U128) {
-        let owner_id = env::predecessor_account_id();
-        if owner_id != self.owner {
+        let caller_id = env::predecessor_account_id();
+        if caller_id != self.owner {
             env::panic(b"Only owner can forge new Token!");
         }
         let amount: u128 = value.into();
@@ -56,13 +56,13 @@ impl NonfungibleToken {
 
         // loop through new tokens being forge
         for token_id in start_id..end_id {
-            self.tokens.insert(token_id, owner_id.clone());
+            self.tokens.insert(token_id, caller_id.clone());
         }
 
         // update total supply of owner
-        let from_owner_count = *self.owner_to_tokens.get(&owner_id).unwrap_or(&0);
+        let from_owner_count = *self.owner_to_tokens.get(&caller_id).unwrap_or(&0);
         let amout: Balance = from_owner_count + amount;
-        self.owner_to_tokens.insert(owner_id.clone(), amout);
+        self.owner_to_tokens.insert(caller_id.clone(), amout);
 
         // update total supply
         self.total_supply += amount;
@@ -154,8 +154,8 @@ impl NonfungibleToken {
             env::panic(b"Only owner can grant access token to another account!");
         }
         let owner = owner.unwrap();
-        let owner_id = env::predecessor_account_id().clone();
-        if *owner != owner_id {
+        let caller_id = env::predecessor_account_id().clone();
+        if *owner != caller_id {
             env::panic(b"Only owner can grant access token to another account!");
         }
         self.approvals.insert(token_id, account_id);
